@@ -2,23 +2,37 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <termios.h>
+#include <unistd.h>
 //
 //
 //
 //
-
+int getch() {
+int ch;
+struct termios oldt, newt;
+tcgetattr(STDIN_FILENO, &oldt);
+newt = oldt;
+newt.c_lflag &= ~(ICANON | ECHO);
+tcsetattr(STDIN_FILENO, TCSANOW, &newt);
+ch = getchar();
+tcsetattr(STDIN_FILENO, TCSANOW, &oldt);
+return ch;
+}
 typedef struct movie {
   char name[100];
-  char date[6];
-  char country[30];
+  char date[10];
+  char country[100];
   char genre[100];
-  char rate[5];
+  char rate[10];
 } movie;
 
 typedef struct Node {
   struct Node *next;
   struct Node *prev;
   movie Film;
+  int count;
+  int favourite;
 } Node;
 
 Node *init() {
@@ -34,7 +48,11 @@ void insert(Node *head, movie Film) {
   Node *tmp, *q = head->next;
   tmp = (Node*)malloc(sizeof(Node));
   head->next = tmp;
-  tmp->Film = Film;
+  strcpy(tmp->Film.name, Film.name);
+  strcpy(tmp->Film.date, Film.date);
+  strcpy(tmp->Film.country, Film.country);
+  strcpy(tmp->Film.genre, Film.genre);
+  strcpy(tmp->Film.rate, Film.rate);
   tmp->prev = head;
   tmp->next = q;
   q->prev = tmp;
@@ -44,8 +62,7 @@ void list_print(Node *head) {
   Node *p;
   p = head;
   do {
-    printf("%s %s %s %s %s\n", p->Film.name, p->Film.date, p->Film.country,
-           p->Film.genre, p->Film.rate);
+    printf("%s %s %s %s %s\n", p->Film.name, p->Film.date, p->Film.country, p->Film.genre, p->Film.rate);
     p = p->next;
   } while (p != head);
 }
@@ -57,41 +74,47 @@ void list_print_back(Node *head) {
   }
 }
 
-Node* scan_films(FILE *films, Node *head) {
-  struct movie Film;
-  char arr[100];
-  while(feof(films) != 0) {
-    fgets(arr, sizeof(Film.name), films); // name
-    strcpy(Film.name, arr);
-    fgets(arr, sizeof(Film.date), films); // date
-    strcpy(Film.date, arr);
-    fgets(arr, sizeof(Film.country), films); //страна
-    strcpy(Film.country, arr);
-    fgets(arr, sizeof(Film.genre), films); //;жанр
-    strcpy(Film.genre, arr);
-    fgets(arr, sizeof(Film.rate), films); //рейтинг
-    strcpy(Film.rate, arr);
+Node* scan_films(Node *head) {
+  FILE *films = fopen("films.txt", "r");
+  if (films == NULL) {//РїСЂРѕРІРµСЂРєР° РЅР° СЃСѓС‰РµСЃС‚РІРѕРІР°РЅРёРµ С„Р°Р№Р»Р°
+    printf("РўРµРєСЃС‚РѕРІРѕРіРѕ С„Р°Р№Р»Р° СЃ С„РёР»СЊРјР°РјРё РЅРµ СЃСѓС‰РµСЃС‚РІСѓРµС‚(");
+    return 0;
+  }
+  movie Film;
+  while(!feof(films)) {
+    fgets(Film.name, 100, films); // name
+    Film.name[strcspn(Film.name, "\n")] = 0;
+    fgets(Film.date, 10, films); // date
+    Film.date[strcspn(Film.date, "\n")] = 0;
+    fgets(Film.country, 100, films); //СЃС‚СЂР°РЅР°
+    Film.country[strcspn(Film.country, "\n")] = 0;
+    fgets(Film.genre, 100, films); //;Р¶Р°РЅСЂ
+    Film.genre[strcspn(Film.genre, "\n")] = 0;
+    fgets(Film.rate, 10, films); //СЂРµР№С‚РёРЅРі
+    Film.rate[strcspn(Film.rate, "\n")] = 0;
+  
     insert(head, Film);
   }
+  fclose(films);
   return head;
 }
 
 void print_cards_films(Node *head) {
   for (int i = 0; i < 20; i++) {
     for (int j = 0; j < 83; j++) {
-      //левая карточка
+      //Р»РµРІР°СЏ РєР°СЂС‚РѕС‡РєР°
       if (((i == 2) || (i == 17)) && j < 25) {
         printf("_");
       } else if (j == 25 && i > 2 && i < 18) {
         printf("|");
       }
-      // средняя карточка
+      // СЃСЂРµРґРЅСЏСЏ РєР°СЂС‚РѕС‡РєР°
       else if ((i == 0 || i == 19) && j > 28 && j < 53) {
         printf("_");
       } else if ((j == 28 || j == 53) && i != 0) {
         printf("|");
       }
-      // правая карточка
+      // РїСЂР°РІР°СЏ РєР°СЂС‚РѕС‡РєР°
       else if (((i == 2) || (i == 12)) && j > 56 && j < 82) {
         printf("_");
       } else if ((j == 57 || j == 82) && (i > 2) && (i < 14)) {
@@ -104,22 +127,17 @@ void print_cards_films(Node *head) {
   }
 }
 
-// void print_()
+
 int main(void) {
   // setlocale(LC_ALL,"ru");
 
-  //считывание фильмов
-  
+  //СЃС‡РёС‚С‹РІР°РЅРёРµ С„РёР»СЊРјРѕРІ
   Node *head = init();
-  FILE *films = fopen("films.txt", "r");
-  if (films == NULL) {//проверка на существование файла
-    printf("Текстового файла с фильмами не существует(");
-    return 0;
-  }
+  scan_films(head);
 
-  head = scan_films(films, head);
-  list_print(head);
-  // print_cards_films(head);
-  fclose(films);
+  //СЃРїРёСЃРѕРє РёР·Р±СЂР°РЅРЅРѕРіРѕ
+
+  char request[10];
+  strcpy(request, pageAutho());
   return 0;
 }
