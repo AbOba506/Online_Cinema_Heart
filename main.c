@@ -99,27 +99,139 @@ Node* scan_films(Node *head) {
   return head;
 }
 
-void print_cards_films(Node *head) {
-  for (int i = 0; i < 20; i++) {
-    for (int j = 0; j < 83; j++) {
-      //левая карточка
-      if (((i == 2) || (i == 17)) && j < 25) {
-        printf("_");
-      } else if (j == 25 && i > 2 && i < 18) {
-        printf("|");
+void print_window(){
+  Back
+  printf("\u250f");
+  for(int i = 0; i <= len/3; i++){
+    Back
+    for(int j = 0; j <= len+1; j++){
+      Back
+      if(i == 0 && j <= len-1){
+        printf("\u2501");
+        if(j == len-1){
+          printf("\u2513");
+          }
       }
-      // средняя карточка
-      else if ((i == 0 || i == 19) && j > 28 && j < 53) {
-        printf("_");
-      } else if ((j == 28 || j == 53) && i != 0) {
-        printf("|");
+      else if(i >= 1 && i!= len/3 && ((j == 0)||(j == len+1))){
+        printf("\u2503");
       }
-      // правая карточка
-      else if (((i == 2) || (i == 12)) && j > 56 && j < 82) {
-        printf("_");
-      } else if ((j == 57 || j == 82) && (i > 2) && (i < 14)) {
-        printf("|");
-      } else {
+      // название кинотеатра HEART
+      else if(i == 1 && j == 27){
+        PUR
+        printf("\u25b7");
+      }
+      else if(i == 1 && j == 28){
+        printf("H");
+      }
+      else if(i == 1 && j == 29){
+        printf("e");
+      }
+      else if(i == 1 && j == 30){
+        printf("a");
+      }
+      else if(i == 1 && j == 31){
+        printf("r");
+      }
+      else if(i == 1 && j == 32){
+        printf("t");
+      }
+      else if(i == 1 && j == 33){
+        printf("\u25c1");
+        WHT
+      } 
+      // конец названия кинотеатра 
+      else if(i == len/3 && j == 0){
+        printf("\u2517");
+      }
+      else if(i == len/3 && (j > 0) && (j != len+1)){
+        printf("\u2501");
+      }
+      else if(i == len/3 && j == len+1){
+        printf("\u251b");
+      }
+      //карточки
+      else if((j == 3 || j == 18 || j == 43 || j == 58) && (i>4 && i<16)){
+        printf("\u2503");//вертикальная линия
+      }
+      else if((i == 4 || i == 16) && ((j>3 && j <18) || (j>43 && j<58))) {
+        printf("\u2501");//горизонтальная линия
+      }
+      //углы левой
+      else if (i == 4 && j == 3) {
+        printf("\u250f");//левый верхний угол
+      }
+      else if (i == 4 && j == 18){
+        printf("\u2513");//правый верхний угол
+      }
+      else if (i == 16 && j == 3) {
+        printf("\u2517");//левый нижний угол
+      }
+      else if (i == 16 && j == 18) {
+        printf("\u251b");//правый нижний угол
+      }
+      //углы правой
+      else if (i == 4 && j == 43) {
+        printf("\u250f");//левый верхний угол
+      }
+      else if (i == 4 && j == 58){
+        printf("\u2513");//правый верхний угол
+      }
+      else if (i == 16 && j == 43) {
+        printf("\u2517");//левый нижний угол
+      }
+      else if (i == 16 && j == 58) {
+        printf("\u251b");//правый нижний угол
+      }  
+        //средняя карточка
+      else if ((j == 21 || j == 40) && (i > 2 && i < 18)) {
+        PUR
+        printf("\u2503");//вертикальная линия
+        WHT
+      }
+      else if ((i == 2 || i == 18) && (j > 21 && j < 40)) {
+        PUR
+        printf("\u2501");//горизонтальная линия
+        WHT
+      }
+        //углы
+      else if (i == 2 && j == 21) {
+        PUR
+        printf("\u250f");//левый верхний угол
+        WHT
+      }
+      else if (i == 2 && j == 40){
+        PUR
+        printf("\u2513");//правый верхний угол
+        WHT
+      }
+      else if (i == 18 && j == 21) {
+        PUR
+        printf("\u2517");//левый нижний угол
+        WHT
+      }
+      else if (i == 18 && j == 40) {
+        PUR
+        printf("\u251b");//правый нижний угол
+        WHT
+      }  
+        //стрелочки
+      else if (j == 19 && i == 10) {
+        printf("<");
+      }
+      else if (j == 20 && i == 10) {
+        printf("=");
+      }
+      else if (j == 42 && i == 10) {
+        printf(">");
+      }
+      else if (j == 41 && i == 10) {
+        printf("=");
+      }
+        // фильмы
+      // else if () {
+        
+      // }
+      else{
         printf(" ");
       }
     }
@@ -127,13 +239,13 @@ void print_cards_films(Node *head) {
   }
 }
 
-
 int main(void) {
-  // setlocale(LC_ALL,"ru");
+  setlocale(LC_ALL,"ru");
 
   //считывание фильмов
   Node *head = init();
-  scan_films(head);
+  head = scan_films(head);
+  print_window();
 
   //список избранного
 
