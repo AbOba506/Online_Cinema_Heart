@@ -1,6 +1,9 @@
-#include "authorization.h"
-#include "pages.h"
-
+#include <locale.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <termios.h>
+#include <unistd.h>
 
 #define len 60
 #define PUR printf("\033[1;35m");
@@ -16,14 +19,6 @@
 // \u2B9C - стрелка влево
 // \u2B9E - стредка вправо
 
-struct user {
-  char name[20];
-  char login[20];
-  char password[20];
-  char bankaccount[17];
-  int fav_value;
-  int isadmin;
-};
 
 typedef struct movie {
     char name[100];
@@ -321,32 +316,5 @@ int main(void){
     head = scan_films(head);
     // print_window();
 
-
-  // 1 :: Login
-  // 2 :: Signup
-  // 1 :: Catalog
-  // 2 :: Profile
-  struct user user1;
-  for (int i = 1; i < 4; i++) {
-    if (i < 3)
-      switch (pageAuth()) {
-      case 1:
-        user1 = login();
-        break;
-      case 2:
-        pageSignup();
-        signup(user1);
-        break;
-      }
-    if (i > 2)
-      switch (pageEnter(user1)) {
-      case 1:
-        printf("Добро пожаловать в каталог! ");
-        break;
-      case 2:
-        pageProfile(user1);
-        break;
-      }
-  }
     return 0;
 }
