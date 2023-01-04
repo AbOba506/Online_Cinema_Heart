@@ -10,4 +10,4 @@ void pageSignup();
 void pageLogin();
 struct user pageProfile(struct user user);
 
-#endif 
+#endif  
