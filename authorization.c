@@ -168,4 +168,4 @@ struct user login() {
     printf("\033[0d\033[2J");
   }
   return user;
-}
+} 
