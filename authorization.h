@@ -12,4 +12,4 @@ int getch();
 struct user signup(struct user user);
 struct user login();
 
-#endif 
+#endif  
