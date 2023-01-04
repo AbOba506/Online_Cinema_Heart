@@ -48,7 +48,7 @@ Node* init(){
     list->prev = list;
     return(list);
 }
-
+ 
 void insert(Node *head, movie Film) {
     Node *tmp, *q = head->next;
     tmp = (Node*)malloc(sizeof(Node));
