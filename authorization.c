@@ -24,7 +24,8 @@ struct user {
 };
 
 //регистрация нового аккаунта
-struct user signup(struct user user) {
+struct user signup() {
+  struct user user;
   FILE *users;
   char string_tmp[20];
   char str[20];
