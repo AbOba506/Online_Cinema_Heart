@@ -101,7 +101,7 @@ Node* scan_films(Node *head) {
   return head;
 }
 
-void print_window(){
+void page_Katalog(){
   Back
   printf("\u250f");
   for(int i = 0; i <= len/3; i++){
@@ -341,11 +341,11 @@ int main(void){
     if (i > 2)
       switch (pageEnter(user1)) {
       case 1:
-        printf("Добро пожаловать в каталог! ");
+        page_Katalog();
         break;
       case 2:
         pageProfile(user1);
-        break;
+        break; 
       }
   }
     return 0;
