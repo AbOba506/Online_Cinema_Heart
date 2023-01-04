@@ -335,7 +335,7 @@ int main(void){
         break;
       case 2:
         pageSignup();
-        signup(user1);
+      user1 = signup();
         break;
       }
     if (i > 2)
