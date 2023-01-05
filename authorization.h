@@ -8,8 +8,18 @@
 #include <termios.h>
 #include <unistd.h>
 
-int getch();
-struct user signup(struct user user);
-struct user login();
+struct user {
+  char name[20];
+  char login[20];
+  char password[20];
+  char bankaccount[17];
+  int fav_value;
+  int isadmin;
+};
 
+int getch();
+struct user signup();
+struct user login();
+struct user profile(struct user user);
+void edit(FILE *users, struct user user, struct user user_prev);
 #endif  
