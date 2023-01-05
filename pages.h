@@ -8,6 +8,5 @@ int pageAuth();
 int pageEnter(struct user user);
 void pageSignup();
 void pageLogin();
-struct user pageProfile(struct user user);
 
 #endif  
