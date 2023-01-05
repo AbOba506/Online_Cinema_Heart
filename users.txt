@@ -1,2 +1,5 @@
 stepan29 Stepan1 stepanchik 1234340000 999 1 
 stepan222 Dasdasd1 asdasdd 18182939829 0 0 
+logintest PassTest1 nicktest 00000000000000 0 0 
+login1 Password1 nickname 1234123412341234 0 0 
+aboba29 Aaaa123123 stepanchik 1234 0 1 
