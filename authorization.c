@@ -18,27 +18,10 @@ int getch() {
   return ch;
 }
 
-//вырезать определенное слово из строки
-char *cut(char str[], int num) {
-  char s[100000];
-  strcpy(s, str);
-  char *word;
-  char *p;
-  int k = 0;
-  for (p = strtok(s, " "); p; p = strtok(NULL, " ")) {
-    k++;
-    if (k == num)
-      return p;
-    word = p;
-  }
-  if (k < num)
-    return word;
-}
-
 struct user {
-  char name[20];
-  char login[20];
-  char password[20];
+  char name[21];
+  char login[21];
+  char password[21];
   char bankaccount[17];
   int fav_value;
   int isadmin;
@@ -190,7 +173,7 @@ struct user login() {
     printf("\033[0d\033[2J");
   }
   return user;
-} 
+}
 
 //редактирование профиля в лк
 struct user profile(struct user user) {
@@ -313,6 +296,102 @@ struct user profile(struct user user) {
           }
           else if (i == 4 && j == 39) {
             printf("\u298a");
+          }
+          else if (i == 5 && j == 12) {
+            printf("Д");
+          }
+          else if (i == 5 && j == 13) {
+            printf("л");
+          }
+          else if (i == 5 && j == 14) {
+            printf("я");
+          }
+          else if (i == 5 && j == 16) {
+            printf("и");
+          }
+          else if (i == 5 && j == 17) {
+            printf("з");
+          }
+          else if (i == 5 && j == 18) {
+            printf("м");
+          }
+          else if (i == 5 && j == 19) {
+            printf("е");
+          }
+          else if (i == 5 && j == 20) {
+            printf("н");
+          }
+          else if (i == 5 && j == 21) {
+            printf("е");
+          }
+          else if (i == 5 && j == 22) {
+            printf("н");
+          }
+          else if (i == 5 && j == 23) {
+            printf("и");
+          }
+          else if (i == 5 && j == 24) {
+            printf("я");
+          }
+          else if (i == 5 && j == 26) {
+            printf("д");
+          }
+          else if (i == 5 && j == 27) {
+            printf("а");
+          }
+          else if (i == 5 && j == 28) {
+            printf("н");
+          }
+          else if (i == 5 && j == 29) {
+            printf("н");
+          }
+          else if (i == 5 && j == 30) {
+            printf("ы");
+          }
+          else if (i == 5 && j == 31) {
+            printf("х");
+          }
+          else if (i == 5 && j == 33) {
+            printf("н");
+          }
+          else if (i == 5 && j == 34) {
+            printf("а");
+          }
+          else if (i == 5 && j == 35) {
+            printf("ж");
+          }
+          else if (i == 5 && j == 36) {
+            printf("м");
+          }
+          else if (i == 5 && j == 37) {
+            printf("и");
+          }
+          else if (i == 5 && j == 38) {
+            printf("т");
+          }
+          else if (i == 5 && j == 39) {
+            printf("е");
+          }
+          else if (i == 5 && j == 41) {
+            printf("п");
+          }
+          else if (i == 5 && j == 42) {
+            printf("р");
+          }
+          else if (i == 5 && j == 43) {
+            printf("о");
+          }
+          else if (i == 5 && j == 44) {
+            printf("б");
+          }
+          else if (i == 5 && j == 45) {
+            printf("е");
+          }
+          else if (i == 5 && j == 46) {
+            printf("л");
+          }
+          else if (i == 5 && j == 47) {
+            printf(".");
           }
           //конец первой надписи (вход...)
           //начало рамочки с просьбой ввести свои данные
@@ -531,6 +610,102 @@ struct user profile(struct user user) {
           }
           else if (i == 4 && j == 39) {
             printf("\u298a");
+          }
+          else if (i == 5 && j == 12) {
+            printf("Д");
+          }
+          else if (i == 5 && j == 13) {
+            printf("л");
+          }
+          else if (i == 5 && j == 14) {
+            printf("я");
+          }
+          else if (i == 5 && j == 16) {
+            printf("и");
+          }
+          else if (i == 5 && j == 17) {
+            printf("з");
+          }
+          else if (i == 5 && j == 18) {
+            printf("м");
+          }
+          else if (i == 5 && j == 19) {
+            printf("е");
+          }
+          else if (i == 5 && j == 20) {
+            printf("н");
+          }
+          else if (i == 5 && j == 21) {
+            printf("е");
+          }
+          else if (i == 5 && j == 22) {
+            printf("н");
+          }
+          else if (i == 5 && j == 23) {
+            printf("и");
+          }
+          else if (i == 5 && j == 24) {
+            printf("я");
+          }
+          else if (i == 5 && j == 26) {
+            printf("д");
+          }
+          else if (i == 5 && j == 27) {
+            printf("а");
+          }
+          else if (i == 5 && j == 28) {
+            printf("н");
+          }
+          else if (i == 5 && j == 29) {
+            printf("н");
+          }
+          else if (i == 5 && j == 30) {
+            printf("ы");
+          }
+          else if (i == 5 && j == 31) {
+            printf("х");
+          }
+          else if (i == 5 && j == 33) {
+            printf("н");
+          }
+          else if (i == 5 && j == 34) {
+            printf("а");
+          }
+          else if (i == 5 && j == 35) {
+            printf("ж");
+          }
+          else if (i == 5 && j == 36) {
+            printf("м");
+          }
+          else if (i == 5 && j == 37) {
+            printf("и");
+          }
+          else if (i == 5 && j == 38) {
+            printf("т");
+          }
+          else if (i == 5 && j == 39) {
+            printf("е");
+          }
+          else if (i == 5 && j == 41) {
+            printf("п");
+          }
+          else if (i == 5 && j == 42) {
+            printf("р");
+          }
+          else if (i == 5 && j == 43) {
+            printf("о");
+          }
+          else if (i == 5 && j == 44) {
+            printf("б");
+          }
+          else if (i == 5 && j == 45) {
+            printf("е");
+          }
+          else if (i == 5 && j == 46) {
+            printf("л");
+          }
+          else if (i == 5 && j == 47) {
+            printf(".");
           }
           //конец первой надписи (вход...)
           //начало рамочки с просьбой ввести свои данные
@@ -777,6 +952,102 @@ struct user profile(struct user user) {
           else if (i == 4 && j == 39) {
             printf("\u298a");
           }
+          else if (i == 5 && j == 12) {
+            printf("Д");
+          }
+          else if (i == 5 && j == 13) {
+            printf("л");
+          }
+          else if (i == 5 && j == 14) {
+            printf("я");
+          }
+          else if (i == 5 && j == 16) {
+            printf("и");
+          }
+          else if (i == 5 && j == 17) {
+            printf("з");
+          }
+          else if (i == 5 && j == 18) {
+            printf("м");
+          }
+          else if (i == 5 && j == 19) {
+            printf("е");
+          }
+          else if (i == 5 && j == 20) {
+            printf("н");
+          }
+          else if (i == 5 && j == 21) {
+            printf("е");
+          }
+          else if (i == 5 && j == 22) {
+            printf("н");
+          }
+          else if (i == 5 && j == 23) {
+            printf("и");
+          }
+          else if (i == 5 && j == 24) {
+            printf("я");
+          }
+          else if (i == 5 && j == 26) {
+            printf("д");
+          }
+          else if (i == 5 && j == 27) {
+            printf("а");
+          }
+          else if (i == 5 && j == 28) {
+            printf("н");
+          }
+          else if (i == 5 && j == 29) {
+            printf("н");
+          }
+          else if (i == 5 && j == 30) {
+            printf("ы");
+          }
+          else if (i == 5 && j == 31) {
+            printf("х");
+          }
+          else if (i == 5 && j == 33) {
+            printf("н");
+          }
+          else if (i == 5 && j == 34) {
+            printf("а");
+          }
+          else if (i == 5 && j == 35) {
+            printf("ж");
+          }
+          else if (i == 5 && j == 36) {
+            printf("м");
+          }
+          else if (i == 5 && j == 37) {
+            printf("и");
+          }
+          else if (i == 5 && j == 38) {
+            printf("т");
+          }
+          else if (i == 5 && j == 39) {
+            printf("е");
+          }
+          else if (i == 5 && j == 41) {
+            printf("п");
+          }
+          else if (i == 5 && j == 42) {
+            printf("р");
+          }
+          else if (i == 5 && j == 43) {
+            printf("о");
+          }
+          else if (i == 5 && j == 44) {
+            printf("б");
+          }
+          else if (i == 5 && j == 45) {
+            printf("е");
+          }
+          else if (i == 5 && j == 46) {
+            printf("л");
+          }
+          else if (i == 5 && j == 47) {
+            printf(".");
+          }
           //конец первой надписи (вход...)
           //начало рамочки с просьбой ввести свои данные
           else if (i == 7 && j == 13) {
@@ -1011,6 +1282,102 @@ struct user profile(struct user user) {
           else if (i == 4 && j == 39) {
             printf("\u298a");
           }
+          else if (i == 5 && j == 12) {
+            printf("Д");
+          }
+          else if (i == 5 && j == 13) {
+            printf("л");
+          }
+          else if (i == 5 && j == 14) {
+            printf("я");
+          }
+          else if (i == 5 && j == 16) {
+            printf("и");
+          }
+          else if (i == 5 && j == 17) {
+            printf("з");
+          }
+          else if (i == 5 && j == 18) {
+            printf("м");
+          }
+          else if (i == 5 && j == 19) {
+            printf("е");
+          }
+          else if (i == 5 && j == 20) {
+            printf("н");
+          }
+          else if (i == 5 && j == 21) {
+            printf("е");
+          }
+          else if (i == 5 && j == 22) {
+            printf("н");
+          }
+          else if (i == 5 && j == 23) {
+            printf("и");
+          }
+          else if (i == 5 && j == 24) {
+            printf("я");
+          }
+          else if (i == 5 && j == 26) {
+            printf("д");
+          }
+          else if (i == 5 && j == 27) {
+            printf("а");
+          }
+          else if (i == 5 && j == 28) {
+            printf("н");
+          }
+          else if (i == 5 && j == 29) {
+            printf("н");
+          }
+          else if (i == 5 && j == 30) {
+            printf("ы");
+          }
+          else if (i == 5 && j == 31) {
+            printf("х");
+          }
+          else if (i == 5 && j == 33) {
+            printf("н");
+          }
+          else if (i == 5 && j == 34) {
+            printf("а");
+          }
+          else if (i == 5 && j == 35) {
+            printf("ж");
+          }
+          else if (i == 5 && j == 36) {
+            printf("м");
+          }
+          else if (i == 5 && j == 37) {
+            printf("и");
+          }
+          else if (i == 5 && j == 38) {
+            printf("т");
+          }
+          else if (i == 5 && j == 39) {
+            printf("е");
+          }
+          else if (i == 5 && j == 41) {
+            printf("п");
+          }
+          else if (i == 5 && j == 42) {
+            printf("р");
+          }
+          else if (i == 5 && j == 43) {
+            printf("о");
+          }
+          else if (i == 5 && j == 44) {
+            printf("б");
+          }
+          else if (i == 5 && j == 45) {
+            printf("е");
+          }
+          else if (i == 5 && j == 46) {
+            printf("л");
+          }
+          else if (i == 5 && j == 47) {
+            printf(".");
+          }
           //конец первой надписи (вход...)
           //начало рамочки с просьбой ввести свои данные
           else if (i == 7 && j == 13) {
@@ -1229,6 +1596,102 @@ struct user profile(struct user user) {
           else if (i == 4 && j == 39) {
             printf("\u298a");
           }
+          else if (i == 5 && j == 12) {
+            printf("Д");
+          }
+          else if (i == 5 && j == 13) {
+            printf("л");
+          }
+          else if (i == 5 && j == 14) {
+            printf("я");
+          }
+          else if (i == 5 && j == 16) {
+            printf("и");
+          }
+          else if (i == 5 && j == 17) {
+            printf("з");
+          }
+          else if (i == 5 && j == 18) {
+            printf("м");
+          }
+          else if (i == 5 && j == 19) {
+            printf("е");
+          }
+          else if (i == 5 && j == 20) {
+            printf("н");
+          }
+          else if (i == 5 && j == 21) {
+            printf("е");
+          }
+          else if (i == 5 && j == 22) {
+            printf("н");
+          }
+          else if (i == 5 && j == 23) {
+            printf("и");
+          }
+          else if (i == 5 && j == 24) {
+            printf("я");
+          }
+          else if (i == 5 && j == 26) {
+            printf("д");
+          }
+          else if (i == 5 && j == 27) {
+            printf("а");
+          }
+          else if (i == 5 && j == 28) {
+            printf("н");
+          }
+          else if (i == 5 && j == 29) {
+            printf("н");
+          }
+          else if (i == 5 && j == 30) {
+            printf("ы");
+          }
+          else if (i == 5 && j == 31) {
+            printf("х");
+          }
+          else if (i == 5 && j == 33) {
+            printf("н");
+          }
+          else if (i == 5 && j == 34) {
+            printf("а");
+          }
+          else if (i == 5 && j == 35) {
+            printf("ж");
+          }
+          else if (i == 5 && j == 36) {
+            printf("м");
+          }
+          else if (i == 5 && j == 37) {
+            printf("и");
+          }
+          else if (i == 5 && j == 38) {
+            printf("т");
+          }
+          else if (i == 5 && j == 39) {
+            printf("е");
+          }
+          else if (i == 5 && j == 41) {
+            printf("п");
+          }
+          else if (i == 5 && j == 42) {
+            printf("р");
+          }
+          else if (i == 5 && j == 43) {
+            printf("о");
+          }
+          else if (i == 5 && j == 44) {
+            printf("б");
+          }
+          else if (i == 5 && j == 45) {
+            printf("е");
+          }
+          else if (i == 5 && j == 46) {
+            printf("л");
+          }
+          else if (i == 5 && j == 47) {
+            printf(".");
+          }
           //конец первой надписи (вход...)
           //начало рамочки с просьбой ввести свои данные
           else if (i == 7 && j == 13) {
@@ -1367,17 +1830,34 @@ struct user profile(struct user user) {
   return user;
 }
 
+//вырезать определенное слово из строки (нужно для редактирования)
+char *cut(char str[], int num) {
+  char s[100000];
+  strcpy(s, str);
+  char *word;
+  char *p;
+  int k = 0;
+  for (p = strtok(s, " "); p; p = strtok(NULL, " ")) {
+    k++;
+    if (k == num)
+      return p;
+    word = p;
+  }
+  if (k < num)
+    return word;
+}
+
 //перезапись данных аккаунта в файле
 void edit(FILE *users, struct user user, struct user user_prev) {
   users = fopen("users.txt", "r");
-  char str_tmp[20];
-  int i, j = 0;
+  char str_tmp[21];
+  int i = 0, j = 0;
   while (feof(users) == 0) {
     fscanf(users, "%s", &str_tmp);
     i++;
   }
   fclose(users);
-  char users_info[(i - 1) * 21];
+  char users_info[i * 22];
   users = fopen("users.txt", "r");
   for (j = 0; j < i - 1; j++) {
     fscanf(users, "%s", &str_tmp);
