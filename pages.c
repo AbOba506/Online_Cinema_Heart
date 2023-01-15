@@ -677,11 +677,10 @@ int pageAuth() {
   key = 0;
   return request;
 }
-int pageEnter(struct user user) {
+int pageEnter(struct user user, int key) {
   int p;
   int request;
   printf("\033[0d\033[2J");
-  int key = 1;
   do {
     switch (key) {
 
@@ -1693,7 +1692,6 @@ int pageEnter(struct user user) {
     key = getch();
     printf("\033[0d\033[2J");
   } while (key != 10);
-  key = NULL;
   return request;
 }
 void pageSignup() {

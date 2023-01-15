@@ -5,7 +5,7 @@
 
 int kolvo(int n);
 int pageAuth();
-int pageEnter(struct user user);
+int pageEnter(struct user user, int key);
 void pageSignup();
 void pageLogin();
 

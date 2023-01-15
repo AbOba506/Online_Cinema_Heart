@@ -21,5 +21,6 @@ int getch();
 struct user signup();
 struct user login();
 struct user profile(struct user user);
+char *cut(char str[], int num);
 void edit(FILE *users, struct user user, struct user user_prev);
-#endif  
+#endif
