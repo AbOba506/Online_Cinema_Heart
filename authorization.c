@@ -33,6 +33,8 @@ struct user signup() {
   FILE *users;
   char string_tmp[20];
   char str[20];
+  char file_name[32];
+  strcpy(file_name, "favourites/fav_");
   char rule1[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   char rule2[] = "abcdefghijklmnopqrstuvwxyz";
   char rule3[] = "0123456789";
@@ -101,6 +103,10 @@ struct user signup() {
   user.fav_value = 0;
   fprintf(users, "%s %s %s %s %d %d \n", user.login, user.password, user.name,
           user.bankaccount, user.fav_value, user.isadmin);
+  fclose(users);
+    strcat(file_name, user.login);
+  strcat(file_name, ".txt");
+  users = fopen(file_name, "w");
   fclose(users);
   printf("Регистрация прошла успешно! \n");
   return user;
@@ -179,6 +185,10 @@ struct user login() {
 struct user profile(struct user user) {
   FILE *users;
   struct user user_prev = user;
+  char name_old[32]; //временные строки для работы
+  strcpy(name_old, "favourites/fav_");
+  strcat(name_old, user.login);
+  strcat(name_old, ".txt");
   char string_tmp[20];
   char str[20];
   char rule1[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -1825,7 +1835,12 @@ struct user profile(struct user user) {
     key = getch();
     printf("\033[0d\033[2J");
   } while (key != 27);
-
+  
+  char name_new[30];
+  strcpy(name_new, "favourites/fav_");
+  strcat(name_new, user.login);
+  strcat(name_new, ".txt");
+  rename(name_old, name_new);
   key = 0;
   return user;
 }
