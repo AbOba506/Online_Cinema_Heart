@@ -96,7 +96,8 @@ Node *scan_films(Node *head) {
   return head;
 }
 
-void page_Katalog() {
+void page_Katalog(Node *head) {
+  head = scan_films(head);
   Back printf("\u250f");
   for (int i = 0; i <= len / 3; i++) {
     Back for (int j = 0; j <= len + 1; j++) {
@@ -183,6 +184,11 @@ void page_Katalog() {
         WHT
       }
       else if ((i == 2 || i == 18) && (j > 21 && j < 40)) {
+        PUR printf("\u2501"); //горизонтальная линия
+        WHT
+      }
+      //вывод названия фильма
+      else if ((i == 9 || i == 18) && (j > 21 && j < 40)) {
         PUR printf("\u2501"); //горизонтальная линия
         WHT
       }
@@ -296,6 +302,7 @@ void page_Katalog() {
 int main(void) {
   setlocale(LC_ALL, "");
   Node *head = init();
+  int key = 1;
   head = scan_films(head);
   // print_window();
 
@@ -319,15 +326,16 @@ int main(void) {
       }
     user_prev = user1;
     if (i > 2)
-      switch (pageEnter(user1)) {
-      case 1:
-        printf("Добро пожаловать в каталог! ");
-        break;
-      case 2:
-        user1 = profile(user1);
-        break;
-      }
+      while (key != 27)
+        switch (pageEnter(user1, key)) {
+        case 1:
+          page_Katalog(head);
+          break;
+        case 2:
+          user1 = profile(user1);
+          edit(users, user1, user_prev);
+          break;
+        }
   }
-  edit(users, user1, user_prev);
   return 0;
 }
